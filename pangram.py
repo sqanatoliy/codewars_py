@@ -8,7 +8,7 @@ Ignore numbers and punctuation"""
 
 def is_pangram(s):
     s = s.lower()
-    abc = 'abcdefghijklmnopqrstuvwxyz5'
+    abc = "abcdefghijklmnopqrstuvwxyz5"
 
     for letter in abc:
         if letter not in s:
