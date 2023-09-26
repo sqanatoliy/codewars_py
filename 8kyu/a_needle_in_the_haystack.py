@@ -13,10 +13,11 @@ Example(Input --> Output)
 Note: In COBOL, it should return "found the needle at position 6"
 """
 
+
 def find_needle(haystack):
     index = 0
     for i in haystack:
-        if i == 'needle':
+        if i == "needle":
             return f"found the needle at position {index}"
-        index += 1        
+        index += 1
     # your code here

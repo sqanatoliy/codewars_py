@@ -9,10 +9,11 @@ name + " does not play banjo"
 Names given are always valid strings.
 """
 
+
 def are_you_playing_banjo(name):
     # Implement me!
     name1 = name.lower()
     if name1.startswith("r"):
-        return name + " plays banjo" 
+        return name + " plays banjo"
     else:
         return name + " does not play banjo"

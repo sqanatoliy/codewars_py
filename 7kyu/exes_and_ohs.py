@@ -21,4 +21,3 @@ def xo(s):
             os = os + 1
     if xs == os:
         return True
-

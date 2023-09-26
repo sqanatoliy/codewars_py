@@ -10,11 +10,12 @@ Note: The function accepts an integer and returns an integer.
 Happy Coding!
 """
 
+
 def square_digits(num):
     int_list = [int(item) ** 2 for item in list(str(num))]
     str_list = [str(item) for item in int_list]
-    return int(''.join(str_list))
+    return int("".join(str_list))
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
     print(square_digits(9119))

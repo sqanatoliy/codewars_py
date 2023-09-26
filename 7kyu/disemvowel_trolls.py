@@ -10,10 +10,11 @@ For example, the string "This website is for losers LOL!" would become "Ths wbst
 Note: for this kata y isn't considered a vowel.
 """
 
+
 def disemvowel(string_):
-    vowels = ["a", "A", "e", "E",  "i", "I", "o", "O", "u", "U"]
-#     string_ = string_.lower()
+    vowels = ["a", "A", "e", "E", "i", "I", "o", "O", "u", "U"]
+    #     string_ = string_.lower()
     for letter in string_:
         if letter in vowels:
-            string_ = string_.replace(letter, '')
+            string_ = string_.replace(letter, "")
     return string_

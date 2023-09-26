@@ -9,5 +9,6 @@ Examples (input --> output):
 -100 --> "-100"
 """
 
+
 def number_to_string(num):
     return str(num)

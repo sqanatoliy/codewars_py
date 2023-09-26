@@ -24,5 +24,6 @@ Constraints: 0 ≤ firstNumber ≤ n - 1
 [output] an integer
 """
 
+
 def circle_of_numbers(n, fst):
     return (fst + (n - 2) / 2 + 1) % (n)

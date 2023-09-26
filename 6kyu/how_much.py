@@ -35,17 +35,18 @@ Note
 See "Sample Tests" to know the format of the return.
 """
 
+
 def howmuch(m, n):
     total_lst = []
     if n > m:
-        for i in range(m, n+1):
+        for i in range(m, n + 1):
             current_lst = []
             if i % 9 == 1 and i % 7 == 2:
                 current_lst.append([f"M: {i}", f"B: {i//7}", f"C: {i//9}"])
                 total_lst.extend(current_lst)
         return total_lst
     else:
-        for i in range(n, m+1):
+        for i in range(n, m + 1):
             current_lst = []
             if i % 9 == 1 and i % 7 == 2:
                 current_lst.append([f"M: {i}", f"B: {i//7}", f"C: {i//9}"])

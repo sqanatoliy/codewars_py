@@ -7,6 +7,7 @@ Good luck!
 
 Please also try Simple remove duplicates"""
 
+
 def solve(strng: str) -> list:
     final_list = []
     dig_list = []
