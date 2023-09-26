@@ -22,7 +22,7 @@ class Person:
 
     def greet(self, your_name):
 
-        return f"Hello {your_name}, my name is{self.name}"
+        return f"Hello {your_name}, my name is {self.name}"
     
 if __name__=="__main__":
     person = Person("Anatoliy")
