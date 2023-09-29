@@ -56,18 +56,74 @@ After you master this kata, you may try to Decode the Morse code, for real.
 """
 
 
-MORSE_CODE = {'.-': 'A', '-...': 'B', '-.-.': 'C', '-..': 'D', '.': 'E', '..-.': 'F', '--.': 'G', '....': 'H', '..': 'I', '.---': 'J', '-.-': 'K', '.-..': 'L', '--': 'M', '-.': 'N', '---': 'O', '.--.': 'P', '--.-': 'Q', '.-.': 'R', '...': 'S', '-': 'T', '..-': 'U', '...-': 'V', '.--': 'W', '-..-': 'X', '-.--': 'Y', '--..': 'Z', '-----': '0', '.----': '1', '..---': '2', '...--': '3', '....-': '4', '.....': '5', '-....': '6', '--...': '7', '---..': '8', '----.': '9', '.-.-.-': '.', '--..--': ',', '..--..': '?', '.----.': "'", '-.-.--': '!', '-..-.': '/', '-.--.': '(', '-.--.-': ')', '.-...': '&', '---...': ':', '-.-.-.': ';', '-...-': '=', '.-.-.': '+', '-....-': '-', '..--.-': '_', '.-..-.': '"', '...-..-': '$', '.--.-.': '@', '...---...': 'SOS'}
+MORSE_CODE = {
+    ".-": "A",
+    "-...": "B",
+    "-.-.": "C",
+    "-..": "D",
+    ".": "E",
+    "..-.": "F",
+    "--.": "G",
+    "....": "H",
+    "..": "I",
+    ".---": "J",
+    "-.-": "K",
+    ".-..": "L",
+    "--": "M",
+    "-.": "N",
+    "---": "O",
+    ".--.": "P",
+    "--.-": "Q",
+    ".-.": "R",
+    "...": "S",
+    "-": "T",
+    "..-": "U",
+    "...-": "V",
+    ".--": "W",
+    "-..-": "X",
+    "-.--": "Y",
+    "--..": "Z",
+    "-----": "0",
+    ".----": "1",
+    "..---": "2",
+    "...--": "3",
+    "....-": "4",
+    ".....": "5",
+    "-....": "6",
+    "--...": "7",
+    "---..": "8",
+    "----.": "9",
+    ".-.-.-": ".",
+    "--..--": ",",
+    "..--..": "?",
+    ".----.": "'",
+    "-.-.--": "!",
+    "-..-.": "/",
+    "-.--.": "(",
+    "-.--.-": ")",
+    ".-...": "&",
+    "---...": ":",
+    "-.-.-.": ";",
+    "-...-": "=",
+    ".-.-.": "+",
+    "-....-": "-",
+    "..--.-": "_",
+    ".-..-.": '"',
+    "...-..-": "$",
+    ".--.-.": "@",
+    "...---...": "SOS",
+}
+
 
 def decode_bits(bits):
-    zero = '0'
+    zero = "0"
     bits_list = []
     zero_list = []
     count = 0
     if bits.startswith("0"):
         bits = bits.strip("0")
     if zero not in bits:
-        return '.'  # Повертаємо 'E', якщо нулі відсутні
-    
+        return "."  # Повертаємо 'E', якщо нулі відсутні
     for index, bit in enumerate(bits):
         if bit == "0":
             count += 1
@@ -78,7 +134,6 @@ def decode_bits(bits):
             count = 0
     filtered_zero_list = [x for x in zero_list if x != 0]
     print("filtered_zero_list", filtered_zero_list)
-    
     for index, bit in enumerate(bits):
         if bit == "1":
             count += 1
@@ -89,29 +144,46 @@ def decode_bits(bits):
             count = 0
     filtered_bits_list = [x for x in bits_list if x != 0]
     print("filtered_bits_list", filtered_bits_list)
-    
     if len(filtered_zero_list) > 1:
         multiplier = min(filtered_zero_list)
     elif len(filtered_zero_list) == 1 and filtered_zero_list[0] == 1:
         multiplier = 1
     elif len(filtered_zero_list) == 1 and filtered_zero_list[0] == 2:
         multiplier = 2
-    elif len(filtered_zero_list) == 1 and filtered_zero_list[0] == 3 and filtered_zero_list[0] != min(filtered_bits_list):
+    elif (
+        len(filtered_zero_list) == 1
+        and filtered_zero_list[0] == 3
+        and filtered_zero_list[0] != min(filtered_bits_list)
+    ):
         multiplier = 1
-    elif len(filtered_zero_list) == 1 and filtered_zero_list[0] == 3 and filtered_zero_list[0] % min(filtered_bits_list) == 0:
+    elif (
+        len(filtered_zero_list) == 1
+        and filtered_zero_list[0] == 3
+        and filtered_zero_list[0] % min(filtered_bits_list) == 0
+    ):
         multiplier = 3
-    elif len(filtered_zero_list) == 1 and filtered_zero_list[0] % 3 != 0 and filtered_zero_list[0] % 7 != 0:
+    elif (
+        len(filtered_zero_list) == 1
+        and filtered_zero_list[0] % 3 != 0
+        and filtered_zero_list[0] % 7 != 0
+    ):
         multiplier = filtered_zero_list[0]
     elif len(filtered_zero_list) == 1 and filtered_zero_list[0] % 3 == 0:
         multiplier = int(filtered_zero_list[0] / 3)
     print("multiplier", multiplier)
-    return bits.replace(multiplier*'111', '-').replace(multiplier*'000', ' ').replace(multiplier*'1', '.').replace(multiplier*'0', '')
+    return (
+        bits.replace(multiplier * "111", "-")
+        .replace(multiplier * "000", " ")
+        .replace(multiplier * "1", ".")
+        .replace(multiplier * "0", "")
+    )
+
 
 def decode_morse(morse_code):
     if len(morse_code) == 1:
         return MORSE_CODE[morse_code]
     list_words = []
-    sentence = ([i.split() for i in morse_code.split("   ")])
+    sentence = [i.split() for i in morse_code.split("   ")]
     for word in sentence:
         for char in word:
             list_words.append(MORSE_CODE[char])
@@ -122,9 +194,8 @@ def decode_morse(morse_code):
     # return morseCode.replace('.', MORSE_CODE['.']).replace('-', MORSE_CODE['-']).replace(' ', '')
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
     bit_code = "1100110011001100000011000000111111001100111111001111110000000000000011001111110011111100111111000000110011001111110000001111110011001100000011"
-    bit_code1  = "10001"
+    bit_code1 = "10001"
     print(decode_bits(bit_code1))
     print(decode_morse(decode_bits(bit_code1)))
-    
