@@ -48,6 +48,7 @@ This is mostly because otherwise the engine would simply ignore the tests, resul
 Good luck!
 
 After you complete this kata, you may try yourself at Decode the Morse code, advanced.
+https://www.codewars.com/kata/decode-the-morse-code-advanced
 """
 
 MORSE_CODE = {
